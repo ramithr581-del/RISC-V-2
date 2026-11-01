@@ -28,9 +28,12 @@ stage: decode
 #   single_cycle_riscv: {source_files: [Single_Cycle_RISCV/rtl.sv]}
 
 modules:
-if_stage:           {source_files: [SRC/if_stage.sv]}
-decoder:            {source_files: [SRC/decoder.sv]}
-imm_generator:      {source_files: [SRC/imm_generator.sv]}
-register_file:      {source_files: [SRC/register_file.sv]}
-main_control:       {source_files: [SRC/main_control.sv]}
-id_stage:           {source_files: [SRC/id_stage.sv]}
+  if_stage:           {source_files: [SRC/if_stage.sv]}
+  decoder:            {source_files: [SRC/decoder.sv]}
+  imm_generator:      {source_files: [SRC/imm_generator.sv]}
+  register_file:      {source_files: [SRC/register_file.sv]}
+  main_control:       {source_files: [SRC/main_control.sv]}
+  id_stage:           {source_files: [SRC/id_stage.sv]}
+  alu:                {source_files: [SRC/alu.sv]}
+  alu_control:        {source_files: [SRC/alu_control.sv]}
+  ex_stage:           {source_files: [SRC/ex_stage.sv]}
