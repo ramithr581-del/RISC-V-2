@@ -21,6 +21,7 @@
 
 
 
+ 
 module main_control (
     input  logic [6:0] opcode,
     input  logic [2:0] fn3,
@@ -37,19 +38,19 @@ module main_control (
 
 always_comb begin
 
-    // Default values for every output
-    memtoreg = 2'b00;
-    branch   = 1'b0;
-    mux_inp  = 1'b0;
-    memread  = 1'b0;
-    memwrite = 1'b0;
-    alusrc   = 1'b0;
+    // Default values
+    memtoreg  = 2'b00;
+    branch    = 1'b0;
+    mux_inp   = 1'b0;
+    memread   = 1'b0;
+    memwrite  = 1'b0;
+    alusrc    = 1'b0;
     reg_write = 1'b0;
-    aluop    = 3'b000;
+    aluop     = 3'b000;
 
     case (opcode)
 
-        // R-type instructions
+        // R-type
         7'b0110011: begin
             memtoreg  = 2'b00;
             branch    = 1'b0;
@@ -61,7 +62,7 @@ always_comb begin
             aluop     = 3'b000;
         end
 
-        // I-type arithmetic instructions
+        // I-type arithmetic
         7'b0010011: begin
             memtoreg  = 2'b00;
             branch    = 1'b0;
@@ -73,7 +74,7 @@ always_comb begin
             aluop     = 3'b001;
         end
 
-        // Load instructions
+        // Load
         7'b0000011: begin
             memtoreg  = 2'b01;
             branch    = 1'b0;
@@ -85,7 +86,7 @@ always_comb begin
             aluop     = 3'b010;
         end
 
-        // Store instructions
+        // Store
         7'b0100011: begin
             memtoreg  = 2'b11;
             branch    = 1'b0;
@@ -97,7 +98,7 @@ always_comb begin
             aluop     = 3'b011;
         end
 
-        // Branch instructions
+        // Branch
         7'b1100011: begin
             memtoreg  = 2'b00;
             branch    = 1'b1;
@@ -152,12 +153,12 @@ always_comb begin
             mux_inp   = 1'b0;
             memread   = 1'b0;
             memwrite  = 1'b0;
-            alusrc    = 1'b0;
+            alusrc    = 1'b1;  // Corrected according to CI feedback
             reg_write = 1'b1;
             aluop     = 3'b000;
         end
 
-        // Unsupported opcode: retain all default zero values
+        // Unsupported opcode
         default: begin
             memtoreg  = 2'b00;
             branch    = 1'b0;
