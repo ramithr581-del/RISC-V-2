@@ -51,4 +51,3 @@ The core is a single-cycle RV32I processor split into four stages. The instructi
 ## Submission Workflow
 
 Submit your repository URL for this checkpoint through the course Google Form. The assignment handout explains how to configure and verify your repository.
-
